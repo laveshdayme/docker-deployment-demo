@@ -22,8 +22,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Unit Tests
+        env:
+          PYTHONPATH: .
         run: |
-          pytest -q
+          python -m pytest tests/ -v
 
   deploy:
     needs: build-test
